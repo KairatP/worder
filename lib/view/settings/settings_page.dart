@@ -61,7 +61,7 @@ class SettingsPage extends StatelessWidget {
               SliverToBoxAdapter(
                 child: SettingsActionCard(
                   title: 'Clean history',
-                  buttonName: "Delate",
+                  buttonName: "Delete",
                   buttonColor: AppColors.redColor,
                   onTab: ()  => showDialog(
                     context: context,
@@ -79,7 +79,7 @@ class SettingsPage extends StatelessWidget {
                             },
                           ),
                           TextButton(
-                            child: const Text("Yes"),
+                            child: const Text("Yes", style: TextStyle(color: Colors.red),),
                             onPressed: () {
                               settingBloc.add(ClearRhymesHistoryEvent());
                               Navigator.of(context).pop();

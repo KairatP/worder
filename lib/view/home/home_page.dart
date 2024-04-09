@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
         pinned: true,
         expandedWidget: GestureDetector(
           child: const Text(
-            'Tab me :)',
+            'Rhyme me :)',
             style: TextStyle(
               color: Colors.white,
               fontSize: 50,
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
         ),
         colapsedWidget: GestureDetector(
           child: const Text(
-            'Tab me :)',
+            'Rhyme me :)',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
