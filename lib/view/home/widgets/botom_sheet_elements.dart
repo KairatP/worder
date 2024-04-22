@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:worder/ui_assets/my_assets/colors.dart';
+import 'package:rhyme_me/global/ui_assets/my_assets/colors.dart';
+
 import 'botom_sheet_base.dart';
 
 class BotomSheetElements extends StatelessWidget {
@@ -9,7 +10,8 @@ class BotomSheetElements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? searchText; // Changed to nullable as it may initially be null
+    String? searchText;
+    final theme = Theme.of(context);
     return BotomSheetBase(
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.stretch, // Ensures children expand horizontally
@@ -33,24 +35,28 @@ class BotomSheetElements extends StatelessWidget {
                   child: Container(
                       height: 40,
                       decoration: BoxDecoration(
-                        color: AppColors.shadowColor.withOpacity(0.1),
+                        color: theme.hintColor.withOpacity(0.1),
                         border:
-                            Border.all(color: AppColors.mainColor, width: 1.0),
+                            Border.all(color: theme.primaryColor, width: 1.0),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: TextField(
+                        keyboardType: TextInputType.text,
                         autofocus: true,
+                        textInputAction: TextInputAction.search,
+                        onSubmitted: (String value) => searchAction(context, value),
                         onChanged: (value) {
                           searchText = value;
                         },
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                             hintText: "Enter your word to find rhymes...",
-                            hintStyle: TextStyle(color: AppColors.greyColor),
+                            hintStyle: TextStyle(
+                                color: theme.hintColor.withOpacity(0.5)),
                             contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                            enabledBorder:
-                                OutlineInputBorder(borderSide: BorderSide.none),
-                            border: OutlineInputBorder(
+                                const EdgeInsets.symmetric(horizontal: 10),
+                            enabledBorder: const OutlineInputBorder(
+                                borderSide: BorderSide.none),
+                            border: const OutlineInputBorder(
                                 borderSide: BorderSide.none)),
                       )),
                 ),
@@ -61,7 +67,7 @@ class BotomSheetElements extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: AppColors.mainColor,
+                    color: theme.primaryColor,
                     border: Border.all(
                         color: AppColors.transparentColor, width: 1.0),
                     borderRadius: BorderRadius.circular(20),
@@ -69,10 +75,7 @@ class BotomSheetElements extends StatelessWidget {
                   child: IconButton(
                     color: AppColors.whiteColor,
                     icon: const Icon(Icons.search),
-                    onPressed: () {
-                      /// do search action
-                      Navigator.of(context).pop(searchText);
-                    },
+                    onPressed: () => searchAction(context, searchText!),
                   ),
                 ),
               ],
@@ -88,11 +91,18 @@ class BotomSheetElements extends StatelessWidget {
             itemBuilder: (context, index) => const ListTile(
               title: Text(''),
             ),
-            separatorBuilder: (context, _) => const Divider(height: 0, color: Colors.transparent,),
+            separatorBuilder: (context, _) => const Divider(
+              height: 0,
+              color: Colors.transparent,
+            ),
             itemCount: 15,
           ))
         ],
       ),
     );
+  }
+
+  void searchAction(BuildContext context, String value) {
+    Navigator.of(context).pop(value);
   }
 }

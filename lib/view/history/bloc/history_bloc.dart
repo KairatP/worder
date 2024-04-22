@@ -1,7 +1,7 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:worder/repository/db_helper_interface.dart';
-import 'package:worder/repository/model/history_rhymes_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rhyme_me/global/repository/realm_rhymes_db/db_helper_interface.dart';
+import 'package:rhyme_me/global/repository/realm_rhymes_db/model/history_rhymes_model.dart';
 
 part 'history_event.dart';
 part 'history_state.dart';
@@ -25,13 +25,8 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
       if (rhymes.isEmpty) {
         emit(NoHistoryState());
       } else {
-        // Map<String, List<String>> one = {};
-        // for (var rhyme in rhymes) {
-        //   one[rhyme.word] = rhyme.words;
-        // }
         emit(HistoryStateLoaded(rhymes: rhymes));
       }
-      
     } catch (e) {
       emit(HistoryStateFailure(e));
     }

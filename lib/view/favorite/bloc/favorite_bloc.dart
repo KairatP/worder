@@ -1,14 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:worder/repository/db_helper_interface.dart';
-import 'package:worder/view/favorite/model/favorite_model.dart';
+import 'package:rhyme_me/global/repository/realm_rhymes_db/db_helper_interface.dart';
+import 'package:rhyme_me/view/favorite/model/favorite_model.dart';
 
 part 'favorite_event.dart';
 part 'favorite_state.dart';
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   final DbHelperInterface favoritesRepository;
-  FavoriteBloc({required this.favoritesRepository})
-      : super(FavoriteInitial()) {
+  FavoriteBloc({required this.favoritesRepository}) : super(FavoriteInitial()) {
     on<LoadFavoriteRhymes>(_load);
     on<ToggleFavoriteRhyme>(_toggleFavorite);
   }
@@ -29,11 +28,11 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
           for (var i = 0; i < item.words.length; i++) {
             if (item.isFavorite[i] == true) {
               final Rhyme rhyme = Rhyme(
-              item.word,
-              item.words[i],
-              item.isFavorite[i],
-            );
-            presentData.add(rhyme);
+                item.word,
+                item.words[i],
+                item.isFavorite[i],
+              );
+              presentData.add(rhyme);
             }
           }
         }
@@ -64,11 +63,11 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
           for (var i = 0; i < item.words.length; i++) {
             if (item.isFavorite[i] == true) {
               final Rhyme rhyme = Rhyme(
-              item.word,
-              item.words[i],
-              item.isFavorite[i],
-            );
-            presentData.add(rhyme);
+                item.word,
+                item.words[i],
+                item.isFavorite[i],
+              );
+              presentData.add(rhyme);
             }
           }
         }

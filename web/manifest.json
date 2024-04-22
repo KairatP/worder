@@ -1,6 +1,6 @@
 {
-    "name": "worder",
-    "short_name": "worder",
+    "name": "rhyme_me",
+    "short_name": "rhyme_me",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

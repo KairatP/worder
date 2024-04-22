@@ -3,14 +3,15 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:worder/ui_assets/my_assets/colors.dart';
-import 'package:worder/view/favorite/bloc/favorite_bloc.dart';
-import 'package:worder/view/history/bloc/history_bloc.dart';
-import 'package:worder/view/home/bloc/home_bloc.dart';
-import 'package:worder/view/widget/cards_list.dart';
+import 'package:rhyme_me/global/ui_assets/my_assets/colors.dart';
+import 'package:rhyme_me/view/favorite/bloc/favorite_bloc.dart';
+import 'package:rhyme_me/view/history/bloc/history_bloc.dart';
+import 'package:rhyme_me/view/home/bloc/home_bloc.dart';
+import 'package:rhyme_me/view/widget/cards_list.dart';
+import 'package:rhyme_me/view/widget/initial_baner.dart';
+
 import '../home/widgets/animated_header/ui_nested_scroll_view.dart';
 import '../home/widgets/botom_sheet_elements.dart';
-import '../home/widgets/home_initial_baner.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -21,35 +22,75 @@ class HomePage extends StatelessWidget {
   /// View area
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       body: UINestedScrollView(
         pinned: true,
         expandedWidget: GestureDetector(
-          child: const Text(
-            'Rhyme me :)',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 50,
-            ),
+          child: const Row(
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              Icon(
+                Icons.search,
+                size: 40,
+                color: AppColors.whiteColor,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              // Expanded(
+              //   child: FittedBox(
+              // child:
+              Text(
+                'Rhyme me',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                ),
+                overflow: TextOverflow.ellipsis,
+                //   ),
+                // ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+            ],
           ),
           onTap: () => _showSearchSheet(context),
         ),
         colapsedWidget: GestureDetector(
-          child: const Text(
-            'Rhyme me :)',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ),
+          child: const Row(
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              Icon(
+                Icons.search,
+                size: 20,
+                color: AppColors.whiteColor,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Rhyme me',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ],
           ),
           onTap: () => _showSearchSheet(context),
         ),
         // leadingWidget: IconButton(
         //     onPressed: () async {
-        //       final query = await _showSearchSheet(context);
-        //       if (query != null) {
-        //         searchWord = query;
-        //       }
+        //       await _showSearchSheet(context);
+        //       // if (query != null) {
+        //       //   searchWord = query;
+        //       // }
         //     },
         //     icon: const Icon(
         //       Icons.search,
@@ -76,7 +117,7 @@ class HomePage extends StatelessWidget {
             }
             if (state is HomeInitial) {
               return const SliverFillRemaining(
-                child: HomeListInitialBanner(
+                child: ListInitialBanner(
                   title: 'Hi there!',
                   subTitle: 'Get started to search rhymes',
                 ),
@@ -87,7 +128,9 @@ class HomePage extends StatelessWidget {
             );
           },
         ),
-        boxDecoration: const BoxDecoration(color: AppColors.mainColor),
+        boxDecoration: BoxDecoration(
+          color: theme.secondaryHeaderColor,
+        ),
       ),
     );
   }

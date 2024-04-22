@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:worder/view/widget/view.dart';
+import 'package:rhyme_me/view/widget/view.dart';
 
 class SettingsActionCard extends StatelessWidget {
   const SettingsActionCard({
     super.key,
     required this.title,
     required this.buttonName,
-    required this.onTab, 
+    required this.onTab,
     required this.buttonColor,
+    required this.textStyle,
   });
 
   final String title;
   final String buttonName;
   final Color buttonColor;
   final VoidCallback onTab;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
     return BasicContainer(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-      margin: const EdgeInsets.only(top: 8,left: 10, right: 10),
+      margin: const EdgeInsets.only(top: 8, left: 10, right: 10),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
         trailing: TextButton(
           style: ButtonStyle(
-            overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent),
+            overlayColor:
+                MaterialStateColor.resolveWith((states) => Colors.transparent),
           ),
           onPressed: onTab,
           child: Text(
             buttonName,
             style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 18,
-                color: buttonColor),
+                fontWeight: FontWeight.w400, fontSize: 18, color: buttonColor),
           ),
           // Icons.delete,
           // color: AppColors.redColor,
@@ -41,7 +42,7 @@ class SettingsActionCard extends StatelessWidget {
         ),
         title: Text(
           title,
-          style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
+          style: textStyle,
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
         ),

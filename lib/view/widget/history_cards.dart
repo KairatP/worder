@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:worder/view/widget/view.dart';
+import 'package:rhyme_me/view/widget/view.dart';
 
 class HistoryCards extends StatelessWidget {
   const HistoryCards({
     super.key,
     required this.rhymes,
     required this.maxLines,
-    required this.width, 
+    required this.width,
     required this.searchWord,
   });
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:worder/ui_assets/my_assets/colors.dart';
+import 'package:rhyme_me/global/ui_assets/my_assets/colors.dart';
 
 class BasicContainer extends StatelessWidget {
   const BasicContainer({
     super.key,
     required this.width,
-    required this.child, 
-    required this.padding, 
+    required this.child,
+    required this.padding,
     required this.margin,
   });
 

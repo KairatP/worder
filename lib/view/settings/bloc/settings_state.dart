@@ -1,12 +1,48 @@
 part of 'settings_bloc.dart';
 
-sealed class SettingsState extends Equatable {
-  const SettingsState();
-  
-  @override
+class SettingsState {
+  const SettingsState(
+    { 
+    required this.theme,
+    required this.notification, 
+    // required this.appTrack, 
+  }
+  );
+
+  final String theme;
+  final String notification;
+  // final String appTrack;
+
   List<Object> get props => [];
 }
 
-final class SettingsInitial extends SettingsState {}
+// class SettingsLoadingState extends SettingsState {}
 
-final class HistoryClean extends SettingsState {}
+
+
+// class SettingsLoaded extends SettingsState {
+//   const SettingsLoaded({ 
+//     required this.theme,
+//     required this.notification, 
+//     required this.appTrack, 
+//   });
+
+//   final String theme;
+//   final String notification;
+//   final String appTrack;
+// }
+
+class SettingsInitial extends SettingsState {
+  SettingsInitial({
+    required super.theme, 
+    required super.notification, 
+    // required super.appTrack
+  });
+}
+
+// class SettingsStateFailure extends SettingsState {
+//   SettingsStateFailure(String string);
+// }
+
+
+// final class HistoryClean extends SettingsState {}

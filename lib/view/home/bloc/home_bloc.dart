@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:realm/realm.dart';
-import 'package:worder/api/services/rhymes_service.dart';
-import 'package:worder/repository/db_helper_interface.dart';
-import 'package:worder/repository/model/history_rhymes_model.dart';
+import 'package:rhyme_me/global/api/services/rhymes_service.dart';
+import 'package:rhyme_me/global/repository/realm_rhymes_db/db_helper_interface.dart';
+import 'package:rhyme_me/global/repository/realm_rhymes_db/model/history_rhymes_model.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -73,8 +73,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     } catch (e) {
       // Handle errors by emitting a failure state
       emit(HomeStateFailure(e.toString()));
-      } finally {
-        event.completer?.complete();
+    } finally {
+      event.completer?.complete();
     }
   }
 

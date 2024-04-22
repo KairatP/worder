@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:worder/ui_assets/my_assets/colors.dart';
-import 'package:worder/view/widget/basic_container.dart';
+import 'package:rhyme_me/global/ui_assets/my_assets/colors.dart';
+import 'package:rhyme_me/view/widget/basic_container.dart';
 
 class CardsList extends StatelessWidget {
   const CardsList({
     required this.isFavorite,
     super.key,
     required this.word,
-    this.rhymes, 
+    this.rhymes,
     required this.tabFavorite,
   });
 
@@ -56,10 +56,10 @@ class CardsList extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black.withOpacity(1),
-                    fontWeight: FontWeight.w500,
-                  ),
+                      fontSize: 18,
+                      color: Colors.black.withOpacity(1),
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],

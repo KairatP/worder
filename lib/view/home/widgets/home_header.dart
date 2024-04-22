@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:worder/view/widget/history_cards.dart';
+import 'package:rhyme_me/view/widget/history_cards.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
@@ -17,13 +17,12 @@ class HomeHeader extends StatelessWidget {
             final rhymes = List.generate(14, (index) => "word $index");
 
             return HistoryCards(
-              rhymes: rhymes, 
-              maxLines: 3,  
-              width: 150, 
+              rhymes: rhymes,
+              maxLines: 3,
+              width: 150,
               searchWord: "Wordsssssssssssssssssssssssssssssssssssssss",
             );
-          }
-        ),
+          }),
     );
   }
 }
