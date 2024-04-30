@@ -139,7 +139,7 @@ class SettingsPage extends StatelessWidget {
         height: 20,
         child: const Center(
           child: Text(
-            '© Kairat Paramonov',
+            '© Kairat Parmanov',
             style: TextStyle(color: Colors.grey),
             textAlign: TextAlign.center,
           ),
